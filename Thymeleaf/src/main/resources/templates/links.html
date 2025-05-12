@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>links</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+
+<h1>Links Expression</h1>
+
+<a th:href="@{/hello}"> Go to Hello world</a>
+<p><a th:href="@{/links/{id}(id=${id})}">link with parameter</a></p>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coral': '#F79B72',
+                        'dark-teal': '#2A4759',
+                        'light-gray': '#DDDDDD',
+                        'off-white': '#EEEEEE',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-gray min-h-screen flex items-center justify-center">
+<div class="w-full max-w-3xl bg-off-white shadow-md rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-dark-teal mb-6 text-center">User Registration Form</h2>
+    <form th:action="@{/users/register}" th:object="${user}" method="post" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div>
+            <label for="name" class="block text-dark-teal mb-1 text-sm">Name: <span class="text-red-500">*</span></label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter your name" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" required />
+        </div>
+        <div>
+            <label for="email" class="block text-dark-teal mb-1 text-sm">Email: <span class="text-red-500">*</span></label>
+            <input type="email" id="email" th:field="*{email}" placeholder="Enter your email" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" required />
+        </div>
+        <div>
+            <label for="phone" class="block text-dark-teal mb-1 text-sm">Phone:</label>
+            <input type="tel" id="phone" th:field="*{phone}" placeholder="Enter your phone number" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" />
+        </div>
+        <div>
+            <label for="age" class="block text-dark-teal mb-1 text-sm">Age:</label>
+            <input type="number" id="age" th:field="*{age}" placeholder="Enter your age" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" />
+        </div>
+        <div>
+            <label for="address" class="block text-dark-teal mb-1 text-sm">Address:</label>
+            <input type="text" id="address" th:field="*{address}" placeholder="Enter your address" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" />
+        </div>
+        <div>
+            <label for="city" class="block text-dark-teal mb-1 text-sm">City:</label>
+            <input type="text" id="city" th:field="*{city}" placeholder="Enter your city" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" />
+        </div>
+        <div>
+            <label for="country" class="block text-dark-teal mb-1 text-sm">Country:</label>
+            <input type="text" id="country" th:field="*{country}" placeholder="Enter your country" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" />
+        </div>
+        <div>
+            <label for="postalCode" class="block text-dark-teal mb-1 text-sm">Postal Code:</label>
+            <input type="text" id="postalCode" th:field="*{postalCode}" placeholder="Enter your postal code" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" />
+        </div>
+        <div>
+            <label for="username" class="block text-dark-teal mb-1 text-sm">Username: <span class="text-red-500">*</span></label>
+            <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" required />
+        </div>
+        <div>
+            <label for="password" class="block text-dark-teal mb-1 text-sm">Password: <span class="text-red-500">*</span></label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Enter your password" class="w-full border border-light-gray rounded-md p-2 text-dark-teal focus:border-coral focus:ring focus:ring-coral focus:ring-opacity-50" required />
+        </div>
+        <div class="md:col-span-2 mt-4">
+            <button type="submit" class="w-full bg-coral text-white py-2 rounded-md hover:bg-dark-teal transition">Register</button>
+        </div>
+    </form>
+    <div th:if="${param.success}" class="mt-4 text-green-600 text-center">
+        Registration successful!
+    </div>
+</div>
+</body>
+</html>
